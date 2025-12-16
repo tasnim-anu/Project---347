@@ -18,3 +18,27 @@ class Review(models.Model):
 
     def __str__(self):
         return f"{self.user_name} - {self.product_name} ({self.star_rating}⭐)"
+
+
+
+
+class Product(models.Model):
+    CATEGORY_CHOICES = [
+        ('resin', 'Resin Art'),
+        ('custom', 'Customised Work'),
+        ('chocolate', 'Chololate Box'),
+        ('ScrapBook', 'Scrapbook'),
+    ]
+
+    name = models.CharField(max_length=200)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    price = models.PositiveIntegerField()
+    image = models.ImageField(upload_to='products/')
+    short_description = models.TextField(max_length=300, blank=True)
+
+    is_featured = models.BooleanField(default=False)  
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name

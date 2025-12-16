@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Product{% endblock title %}
+
+{% block body %}
+
+{% if search %}
+  <h4 class="text-center my-4">
+    Search results for "{{ search }}"
+  </h4>
+{% elif category %}
+  <h4 class="text-center my-4 text-capitalize">
+    {{ category }} Products
+  </h4>
+{% else %}
+  <h4 class="text-center my-4">All Products</h4>
+{% endif %}
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+    {% for product in products %}
+    <div class="col">
+      <div class="card shadow-sm h-100">
+
+        {% if product.image %}
+          <img src="{{ product.image.url }}"
+               class="card-img-top"
+               style="height:225px; object-fit:cover;">
+        {% else %}
+          <img src="{% static 'images/no-image.png' %}"
+               class="card-img-top"
+               style="height:225px; object-fit:cover;">
+        {% endif %}
+
+        <div class="card-body">
+          <h6>{{ product.name }}</h6>
+          <p>{{ product.short_description }}</p>
+          <small>৳{{ product.price }}</small>
+        </div>
+
+      </div>
+    </div>
+    {% empty %}
+      <p class="text-center">No products found.</p>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock body %}

@@ -1,11 +1,13 @@
 from django.shortcuts import render, HttpResponse, redirect
-from .models import Review
+from .models import Review, Product
+from django.db.models import Q
 # Create your views here.
 
 
 def index(request):
-    return render(request, 'Home/index.html')
-# return HttpResponse("This is home page")
+    products = Product.objects.filter(is_featured=True)[
+        :5]  # 4-5 featured products
+    return render(request, 'Home/index.html', {'products': products})
 
 
 def about(request):
@@ -40,5 +42,47 @@ def cart(request):
     return render(request, 'cart.html')
 
 
-def product(request):
-    return render(request, 'product.html')
+# Home → only 4/5 products
+def home_products(request):
+    products = Product.objects.filter(is_featured=True)[:5]
+    return render(request, 'home.html', {
+        'products': products
+    })
+
+
+def product_list(request):
+    products = Product.objects.all()
+
+    search_query = request.GET.get('search', '')
+    category_query = request.GET.get('category', '')
+
+    if search_query:
+        products = products.filter(name__icontains=search_query)
+
+    if category_query:
+        products = products.filter(category=category_query)
+
+    context = {
+        'products': products
+    }
+    return render(request, 'Home/product_list.html', context)
+
+# Category → all category products
+
+
+def category_products(request, category):
+    products = Product.objects.filter(category=category)
+    return render(request, 'Home/product.html', {'products': products})
+
+
+# Search → search result page
+def search_products(request):
+    query = request.GET.get('q')
+    products = Product.objects.filter(
+        Q(name__icontains=query) |
+        Q(short_description__icontains=query)
+    )
+    return render(request, 'Home/product.html', {
+        'products': products,
+        'search': query
+    })

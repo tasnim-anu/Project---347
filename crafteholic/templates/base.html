@@ -33,11 +33,11 @@
             Catagories
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Resin Art</a></li>
-            <li><a class="dropdown-item" href="#">Chocolate box</a></li>
+            <li><a class="dropdown-item" href="{% url 'category_products' 'resin' %}">Resin Art</a></li>
+            <li><a class="dropdown-item" href="{% url 'category_products' 'chocolate' %}">Chocolate box</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Customised work</a></li>
-            <li><a class="dropdown-item" href="#">Scrapbook</a></li>
+            <li><a class="dropdown-item" href="{% url 'category_products' 'custom' %}">Customised work</a></li>
+            <li><a class="dropdown-item" href="{% url 'category_products' 'ScrapBook' %}">Scrapbook</a></li>
           </ul>
           <li class="nav-item">
           <a class="nav-link" href="/contact">Contact Us</a>
@@ -47,11 +47,7 @@
         </li>
        
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-        
-      </form>
+     
         <button class="btn btn-outline-success me-2" type="button">Log in</button>
         <button class="btn btn-sm btn-outline-secondary" type="button">Cart</button>
     </div>

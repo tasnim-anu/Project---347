@@ -46,6 +46,37 @@
   </button>
 </div>
 
+<h3 class="text-center mb-4">Featured Products</h3>
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    {% for product in products %}
+    <div class="col">
+      <div class="card shadow-sm h-100">
+        {% if product.image %}
+          <img src="{{ product.image.url }}" class="card-img-top" style="height:225px; object-fit:cover;" alt="{{ product.name }}">
+        {% else %}
+          <img src="{% static 'images/default_product.jpg' %}" class="card-img-top" style="height:225px; object-fit:cover;" alt="No Image">
+        {% endif %}
+        <div class="card-body">
+          <h6>{{ product.name }}</h6>
+          <p>{{ product.short_description }}</p>
+          <small>৳{{ product.price }}</small>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+  <div class="container my-4">
+    <h4 class="mb-3">Search & Filter Products</h4>
+    <form method="GET" action="{% url 'search_products' %}">
+    <input type="text" name="q" placeholder="Search...">
+  
+    <button type="submit">Filter</button>
+</form>
+</div>
+
+
 </div>
 
 {% endblock body %}
