@@ -115,3 +115,41 @@
   box-shadow: 0 6px 10px rgba(0,0,0,0.15);
 }
 
+.btn-cart {
+    background-color: #ece6ee; /* custom orange */
+    color: rgb(33, 1, 35);
+    border-radius: 8px; /* optional rounded */
+}
+
+
+.btn-logout {
+    background-color: #ece6ee; /* deep orange */
+    color: rgb(33, 1, 35);
+    border: none;
+}
+
+.btn-logout:hover {
+    background-color: hwb(278 25% 66%);
+}
+
+.btn-login {
+    background-color: #ece6ee; /* green */
+    color: rgb(33, 1, 35);
+    border: none;
+}
+
+.btn-login:hover {
+    background-color: hwb(278 25% 66%);
+}
+
+
+.btn-signup {
+    background-color: #ece6ee; 
+    color: rgb(33, 1, 35);
+    border: none;
+}
+
+.btn-signup:hover {
+    background-color: hwb(278 25% 66%);
+}
+

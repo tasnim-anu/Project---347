@@ -128,3 +128,17 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'Home/signup.html', {'form': form})
+
+
+
+
+
+
+
+
+
+
+
+
+
+

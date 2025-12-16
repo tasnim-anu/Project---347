@@ -16,19 +16,19 @@
     <nav class="navbar navbar-expand-lg custom-navbar">
 
   <div class="container ">
-    <a class="navbar-brand" href="#">Crafteholic</a>
+    <a class="navbar-brand me-4" href="#">Crafteholic</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item mx-2">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item mx-2">
           <a class="nav-link" href="/about">About us</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown mx-2">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Catagories
           </a>
@@ -39,10 +39,10 @@
             <li><a class="dropdown-item" href="{% url 'category_products' 'custom' %}">Customised work</a></li>
             <li><a class="dropdown-item" href="{% url 'category_products' 'ScrapBook' %}">Scrapbook</a></li>
           </ul>
-          <li class="nav-item">
+          <li class="nav-item mx-2">
           <a class="nav-link" href="/contact">Contact Us</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item mx-2">
           <a class="nav-link" href="/review">Reviews</a>
         </li>
        
@@ -58,7 +58,7 @@
  {% if user.is_authenticated %}
 
          <li class="nav-item">
-          <a class="btn btn-warning position-relative me-2" href="{% url 'cart' %}">
+          <a class="btn btn-cart position-relative me-2" href="{% url 'cart' %}">
             🛒 Cart
             {% if cart_items_count %}
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -70,14 +70,14 @@
         </li>
 
           <li class="nav-item">
-            <a class="btn btn-outline-danger me-2" href="{% url 'logout' %}">Logout</a>
+            <a class="btn btn-logout me-2" href="{% url 'logout' %}">Logout</a>
           </li>
         {% else %}
           <li class="nav-item">
-            <a class="btn btn-outline-primary me-2" href="{% url 'login' %}">Login</a>
+            <a class="btn btn-login me-2" href="{% url 'login' %}">Login</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-primary" href="{% url 'signup' %}">Sign Up</a>
+            <a class="btn btn-signup" href="{% url 'signup' %}">Sign Up</a>
           </li>
         {% endif %}
 
