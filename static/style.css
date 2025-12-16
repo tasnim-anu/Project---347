@@ -1,0 +1,81 @@
+.carousel-item img {
+  width: 100%;        
+  max-width: 800px;   
+  height: auto;        
+  object-fit: cover;   
+}
+.custom-caption {
+  position: absolute;
+  top: 50%;
+  right: 5%;   /* left বা right set করতে পারেন */
+  transform: translateY(-50%);
+  color: #14101c;       /* text color */
+  background: rgba(199, 179, 211, 0.4); /* optional background */
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-align: left;
+  max-width: 40%;     /* text area width */
+}
+
+.about-section {
+  background-color: #ece6ee;  /* light gray background, change as needed */
+  height: 90vh;               /* page height, adjust as needed */
+  padding: 50px 20px;         /* top-bottom padding */
+}
+
+.about-section h1 {
+  margin-bottom: 5px;
+  font-size: 3rem;            /* headline size */
+}
+
+.about-section p {
+  max-width: 700px;           /* text width limit */
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+.contact-section {
+  min-height: 72vh;
+  background-color: #ece6ee; /* subtle background */
+  padding: 50px 20px;
+}
+
+.contact-section h1 {
+  font-size: 3rem;
+  color: #333;
+}
+
+.contact-description {
+  font-size: 1.2rem;
+  max-width: 600px;
+  color: #555;
+}
+
+.contact-buttons .btn {
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-facebook {
+  background-color: #121314;
+}
+
+.btn-facebook:hover {
+  background-color: #145DBF;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+.btn-instagram {
+  background-color: #000000;
+}
+
+.btn-instagram:hover {
+  background-color: #C1355B;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
