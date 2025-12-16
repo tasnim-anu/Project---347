@@ -47,11 +47,45 @@
         </li>
        
       </ul>
+         <div class="container my-4">
+    <form method="GET" action="{% url 'search_products' %}">
+    <input type="text" name="q" placeholder="Search...">
+  
+    <button type="submit">Filter</button>
+</form>
+</div>
+
+ {% if user.is_authenticated %}
+
+         <li class="nav-item">
+          <a class="btn btn-warning position-relative me-2" href="{% url 'cart' %}">
+            🛒 Cart
+            {% if cart_items_count %}
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{ cart_items_count }}
+              <span class="visually-hidden">items in cart</span>
+            </span>
+            {% endif %}
+          </a>
+        </li>
+
+          <li class="nav-item">
+            <a class="btn btn-outline-danger me-2" href="{% url 'logout' %}">Logout</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="btn btn-outline-primary me-2" href="{% url 'login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-primary" href="{% url 'signup' %}">Sign Up</a>
+          </li>
+        {% endif %}
+
      
-        <button class="btn btn-outline-success me-2" type="button">Log in</button>
-        <button class="btn btn-sm btn-outline-secondary" type="button">Cart</button>
+ 
+       
     </div>
-  </div>
+  
 </nav>
 {% block body %}  {% endblock body %}
 

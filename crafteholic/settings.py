@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Home',
-    
+    'accounts',
     
 ]
 
@@ -81,6 +81,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+LOGIN_REDIRECT_URL = '/'   # login successful → homepage
+LOGOUT_REDIRECT_URL = '/'  # logout → homepage
 
 
 # Password validation
@@ -125,3 +127,10 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'yourgmail@gmail.com'
+EMAIL_HOST_PASSWORD = 'your-app-password'

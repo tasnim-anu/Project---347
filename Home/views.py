@@ -5,9 +5,10 @@ from django.db.models import Q
 
 
 def index(request):
-    products = Product.objects.filter(is_featured=True)[
-        :5]  # 4-5 featured products
-    return render(request, 'Home/index.html', {'products': products})
+    products = Product.objects.filter(is_featured=True)[:5]
+    cart_items_count = 0  
+    return render(request, 'Home/index.html', {'products': products,'cart_items_count': cart_items_count})
+
 
 
 def about(request):
@@ -16,6 +17,15 @@ def about(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+
+def login(request):
+    return render(request, 'Home/index.html')
+
+
+def logout(request):
+    return render(request, 'Home/index.html')
+
 
 
 def review(request):
@@ -37,9 +47,28 @@ def review(request):
     reviews = Review.objects.all().order_by('-created_at')
     return render(request, 'review.html', {"reviews": reviews})
 
+from django.shortcuts import render
 
 def cart(request):
-    return render(request, 'cart.html')
+    # Example cart items for beginner-level demo
+    cart_items = [
+        {"product": {"name": "Resin Art", "price": 20}, "quantity": 2},
+        {"product": {"name": "Custom Work", "price": 15}, "quantity": 1},
+    ]
+
+    # Calculate total for each item
+    for item in cart_items:
+        item["total"] = item["product"]["price"] * item["quantity"]
+
+    # Calculate overall total
+    total_amount = sum(item["total"] for item in cart_items)
+
+    context = {
+        "cart_items": cart_items,
+        "total_amount": total_amount,
+    }
+    return render(request, 'Home/cart.html', context)
+
 
 
 # Home → only 4/5 products
@@ -86,3 +115,16 @@ def search_products(request):
         'products': products,
         'search': query
     })
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+
+def signup(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'Home/signup.html', {'form': form})

@@ -26,6 +26,7 @@ admin.site.index_title = "Welcome to Crafteholic Portal"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Home.urls')),
+    path('accounts/', include('accounts.urls')),
     
 ]
 
