@@ -15,8 +15,8 @@
 
     <nav class="navbar navbar-expand-lg custom-navbar">
 
-  <div class="container ">
-    <a class="navbar-brand me-4" href="#">Crafteholic</a>
+  <div class="container  ">
+    <a class="navbar-brand fw-bold mx-2 " href="#">Crafteholic</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -47,17 +47,17 @@
         </li>
        
       </ul>
-         <div class="container my-4">
+         <div class="container my-4 mx-2">
     <form method="GET" action="{% url 'search_products' %}">
     <input type="text" name="q" placeholder="Search...">
   
-    <button type="submit">Filter</button>
+    <button type="submit">Search</button>
 </form>
 </div>
 
  {% if user.is_authenticated %}
 
-         <li class="nav-item">
+         <li class="nav-item mx-2">
           <a class="btn btn-cart position-relative me-2" href="{% url 'cart' %}">
             🛒 Cart
             {% if cart_items_count %}
@@ -69,14 +69,14 @@
           </a>
         </li>
 
-          <li class="nav-item">
+          <li class="nav-item mx-2">
             <a class="btn btn-logout me-2" href="{% url 'logout' %}">Logout</a>
           </li>
         {% else %}
-          <li class="nav-item">
+          <li class="nav-item mx-2">
             <a class="btn btn-login me-2" href="{% url 'login' %}">Login</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mx-2">
             <a class="btn btn-signup" href="{% url 'signup' %}">Sign Up</a>
           </li>
         {% endif %}
